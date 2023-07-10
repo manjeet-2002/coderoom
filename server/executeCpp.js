@@ -19,6 +19,22 @@ const executeCpp = (filepath) =>{
             err && reject({err,stderr});
             stderr && reject(stderr);
             resolve(stdout);
+            
+            try {
+                fs.unlinkSync(outPath);
+              
+                console.log("Deleted output File successfully.");
+              } catch (error) {
+                console.log(error);
+              }
+              try {
+                fs.unlinkSync(filepath);
+              
+                console.log("Deleted cpp File successfully.");
+              } catch (error) {
+                console.log(error);
+              }
+            
         });
     });
 };
